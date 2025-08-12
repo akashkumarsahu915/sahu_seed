@@ -5,6 +5,7 @@ import { CssBaseline } from '@mui/material';
 import theme from './theme.js';
 import AgricultureDashboard from './Components/Dashboard/AgricultureDashboard.jsx';
 import Mainlayout from './Layout/Mainlayout.jsx';
+import MainProduct from './Components/Products/MainProduct.jsx';
 
 function App() {
   return (
@@ -15,7 +16,10 @@ function App() {
           <Routes>
             <Route path="/" element={<Mainlayout />}>
               <Route index element={<AgricultureDashboard />} />
+              <Route path='/products' element={<MainProduct />}></Route>
             </Route>
+
+
           </Routes>
         </div>
       </BrowserRouter>

@@ -8,7 +8,7 @@ function Mainlayout() {
             <aside className="w-64">
                 <Sidebar />
             </aside>
-            <main className="flex-1 px-4">
+            <main className="flex-1 px-2">
                 <Outlet />
             </main>
         </div>

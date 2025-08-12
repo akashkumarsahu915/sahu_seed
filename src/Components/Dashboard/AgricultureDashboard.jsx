@@ -57,7 +57,7 @@ const AgricultureDashboard = () => {
   ];
 
   return (
-    <Box className="p-6 bg-gray-50 min-h-screen">
+    <Box className="p-12 pt-2.5 bg-gray-50 min-h-screen">
       {/* Header */}
       <div className="mb-8">
         <Typography variant="h4" className="font-bold text-gray-900 mb-2">

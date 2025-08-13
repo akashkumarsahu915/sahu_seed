@@ -4,7 +4,8 @@ import { ThemeProvider } from '@mui/material/styles';
 import { CssBaseline } from '@mui/material';
 import theme from './theme.js';
 import AgricultureDashboard from './Components/Dashboard/AgricultureDashboard.jsx';
-import Mainlayout from './Layout/Mainlayout.jsx';
+import MainLayout from './Layout/MainLayout.jsx';
+
 import MainProduct from './Components/Products/MainProduct.jsx';
 import SalesManagement from './Components/Sales/SalesManagement.jsx';
 

@@ -8,7 +8,7 @@ export const ProductStatus = {
 export const ProductCategory = {
   ALL: 'All',
   SEEDS: 'Seeds',
-  FERTILIZERS: 'Fertilizers', 
+  FERTILIZERS: 'Fertilizers',
   PESTICIDES: 'Pesticides',
   TOOLS: 'Tools'
 };

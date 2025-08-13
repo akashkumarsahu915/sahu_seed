@@ -141,9 +141,7 @@ const ProductCatalog = ({ products: initialProducts }) => {
     handleCloseEditModal();
   };
 
-  const handleReorderProduct = (productId) => {
-    console.log('Reorder product:', productId);
-  };
+  
 
   const handleAddProductSave = (newProduct) => {
     setProducts((prev) => [...prev, newProduct]);
@@ -169,7 +167,7 @@ const ProductCatalog = ({ products: initialProducts }) => {
       <ProductList
         products={filteredProducts}
         onEditProduct={handleEditProduct}
-        onReorderProduct={handleReorderProduct}
+        
       />
 
       {/* Edit Product Modal */}

@@ -6,10 +6,10 @@ import {
   Select, 
   MenuItem, 
   FormControl, 
-  Button
+  Button,
+  FormLabel
 } from '@mui/material'
 import { XMarkIcon, CalendarIcon } from '@heroicons/react/24/outline'
-
 const AddProductModal = ({ open, onClose }) => {
   const [formData, setFormData] = useState({
     productName: '',
@@ -54,13 +54,15 @@ const AddProductModal = ({ open, onClose }) => {
       onClose={onClose}
       maxWidth="md"
       fullWidth
-      PaperProps={{
-        sx: {
-          borderRadius: '12px',
-          padding: 0,
-          margin: '16px',
-          maxHeight: 'calc(100vh - 32px)',
-          overflow: 'hidden' // prevent scroll causing extra white
+      slotProps={{
+        paper: {
+          sx: {
+            borderRadius: '12px',
+            padding: 0,
+            margin: '16px',
+            maxHeight: 'calc(100vh - 32px)',
+            overflow: 'hidden' // prevent scroll causing extra white
+          }
         }
       }}
     >
@@ -87,9 +89,9 @@ const AddProductModal = ({ open, onClose }) => {
             {/* Row 1: Product Name and Category */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <FormLabel className="block text-sm font-medium text-gray-700 mb-2">
                   Product Name
-                </label>
+                </FormLabel>
                 <TextField
                   fullWidth
                   variant="outlined"
@@ -99,9 +101,9 @@ const AddProductModal = ({ open, onClose }) => {
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <FormLabel className="block text-sm font-medium text-gray-700 mb-2">
                   Category
-                </label>
+                </FormLabel>
                 <FormControl fullWidth size="small">
                   <Select
                     value={formData.category}
@@ -119,9 +121,9 @@ const AddProductModal = ({ open, onClose }) => {
             {/* Row 2: Batch Number and Supplier */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <FormLabel className="block text-sm font-medium text-gray-700 mb-2">
                   Batch Number
-                </label>
+                </FormLabel>
                 <TextField
                   fullWidth
                   variant="outlined"
@@ -131,9 +133,9 @@ const AddProductModal = ({ open, onClose }) => {
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <FormLabel className="block text-sm font-medium text-gray-700 mb-2">
                   Supplier
-                </label>
+                </FormLabel>
                 <TextField
                   fullWidth
                   variant="outlined"
@@ -147,9 +149,9 @@ const AddProductModal = ({ open, onClose }) => {
             {/* Row 3: Quantity, Min Stock, and Price */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <FormLabel className="block text-sm font-medium text-gray-700 mb-2">
                   Quantity
-                </label>
+                </FormLabel>
                 <TextField
                   fullWidth
                   variant="outlined"

@@ -6,6 +6,7 @@ import theme from './theme.js';
 import AgricultureDashboard from './Components/Dashboard/AgricultureDashboard.jsx';
 import Mainlayout from './Layout/Mainlayout.jsx';
 import MainProduct from './Components/Products/MainProduct.jsx';
+import SalesManagement from './Components/Sales/SalesManagement.jsx';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
             <Route path="/" element={<Mainlayout />}>
               <Route index element={<AgricultureDashboard />} />
               <Route path='/products' element={<MainProduct />}></Route>
+              <Route path='/sales' element={<SalesManagement />}></Route>
             </Route>
 
 

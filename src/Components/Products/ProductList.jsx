@@ -30,7 +30,7 @@ const StockStatusChip = ({ status }) => {
 };
 
 // Product Card Component
-const ProductCard = ({ product, onEdit, onReorder }) => {
+const ProductCard = ({ product, onEdit }) => {
   const getStockProgress = () => {
     if (product.stockLevel === 0) return 0;
     return Math.min((product.stockLevel / (product.minimumStock * 2)) * 100, 100);
@@ -134,11 +134,10 @@ const ProductCard = ({ product, onEdit, onReorder }) => {
             <Button
               variant="contained"
               size="small"
-              onClick={() => onReorder(product.id)}
               className="flex-1"
-              color="primary"
+              color="error"
             >
-              Reorder
+              Delete
             </Button>
           </Stack>
         </Stack>
@@ -148,7 +147,7 @@ const ProductCard = ({ product, onEdit, onReorder }) => {
 };
 
 // Product Grid Component
-const ProductList = ({ products, onEditProduct, onReorderProduct }) => {
+const ProductList = ({ products, onEditProduct }) => {
   return (
     <Grid container spacing={3}>
       {products.map((product) => (
@@ -156,7 +155,6 @@ const ProductList = ({ products, onEditProduct, onReorderProduct }) => {
           <ProductCard
             product={product}
             onEdit={onEditProduct}
-            onReorder={onReorderProduct}
           />
         </Grid>
       ))}

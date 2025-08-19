@@ -4,7 +4,8 @@ import { ThemeProvider } from '@mui/material/styles';
 import { CssBaseline } from '@mui/material';
 import theme from './theme.js';
 import AgricultureDashboard from './Components/Dashboard/AgricultureDashboard.jsx';
-import Mainlayout from './Layout/Mainlayout.jsx';
+import MainLayout from './Layout/MainLayout.jsx';
+
 import MainProduct from './Components/Products/MainProduct.jsx';
 import SalesManagement from './Components/Sales/SalesManagement.jsx';
 
@@ -15,7 +16,7 @@ function App() {
       <BrowserRouter>
         <div className="min-h-screen bg-gray-50">
           <Routes>
-            <Route path="/" element={<Mainlayout />}>
+            <Route path="/" element={<MainLayout />}>
               <Route index element={<AgricultureDashboard />} />
               <Route path='/products' element={<MainProduct />}></Route>
               <Route path='/sales' element={<SalesManagement />}></Route>

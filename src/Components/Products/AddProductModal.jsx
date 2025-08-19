@@ -1,14 +1,17 @@
 import React, { useState } from 'react'
-import { 
-  Dialog, 
-  DialogContent, 
-  TextField, 
-  Select, 
-  MenuItem, 
-  FormControl, 
+import axios from 'axios'
+import {
+  Dialog,
+  DialogContent,
+  TextField,
+  Select,
+  MenuItem,
+  FormControl,
   Button,
   FormLabel
 } from '@mui/material'
+
+
 import { XMarkIcon, CalendarIcon } from '@heroicons/react/24/outline'
 const AddProductModal = ({ open, onClose }) => {
   const [formData, setFormData] = useState({
@@ -28,9 +31,27 @@ const AddProductModal = ({ open, onClose }) => {
       [field]: value
     }))
   }
-
+  // Map frontend formData to backend expected keys
+  const mapFormData = (formData) => ({
+    name: formData.productName,
+    category: formData.category,
+    batch: formData.batchNumber,
+    supplier: formData.supplier,
+    stocklevel: formData.quantity,
+    minimumStock: formData.minStock,
+    price: formData.price,
+    expire: formData.expiryDate
+  })
   const handleSubmit = () => {
     console.log('Form submitted:', formData)
+    let res = mapFormData(formData);
+    axios.post('https://sahu-seed-backed.onrender.com/api/add-product', res)
+      .then(response => {
+        console.log('Product added:', response.data)
+      })
+      .catch(error => {
+        console.error('Error adding product:', error)
+      })
     onClose()
   }
 
@@ -49,8 +70,8 @@ const AddProductModal = ({ open, onClose }) => {
   }
 
   return (
-    <Dialog 
-      open={open} 
+    <Dialog
+      open={open}
       onClose={onClose}
       maxWidth="md"
       fullWidth
@@ -66,8 +87,8 @@ const AddProductModal = ({ open, onClose }) => {
         }
       }}
     >
-      <DialogContent 
-        sx={{ 
+      <DialogContent
+        sx={{
           padding: 0,
           '&.MuiDialogContent-root': { padding: 0 }
         }}

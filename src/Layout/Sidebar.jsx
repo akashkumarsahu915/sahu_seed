@@ -72,7 +72,7 @@ const Sidebar = () => {
       </Box>
       <Box>
         <Typography variant="h6" className="font-bold text-gray-900">
-          AgriStore
+          MsSahu 
         </Typography>
         <Typography variant="caption" className="text-gray-500">
           Inventory System

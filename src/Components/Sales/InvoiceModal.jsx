@@ -18,7 +18,6 @@ import { formatCurrency, formatDate } from './constants';
 
 const InvoiceModal = ({ open, onClose, sale }) => {
   if (!sale) return null;
-
   const handlePrint = () => {
     const printContent = document.getElementById('invoice-content');
     const originalContents = document.body.innerHTML;
@@ -85,16 +84,16 @@ const InvoiceModal = ({ open, onClose, sale }) => {
               {/* Company Information */}
               <div>
                 <Typography variant="h4" className="font-bold text-green-600 mb-2">
-                  Seeds & Fertilizer Shop
+                  Ms Sahu Seeds & Fertilizers
                 </Typography>
                 <Typography variant="body1" className="text-gray-700 mb-1">
-                  123 Garden Street, Agriculture District
+                 Mahana market complex ,Singakhunta,soro,balasore
                 </Typography>
                 <Typography variant="body2" className="text-gray-600 mb-1">
-                  Phone: +1-555-SEEDS (73337)
+                  Phone: +91 9348677980
                 </Typography>
                 <Typography variant="body2" className="text-gray-600 mb-1">
-                  Email: info@seedsfertilizer.com
+                  Email: ksahu3046@gmail.com
                 </Typography>
                 <Typography variant="body2" className="text-gray-600">
                   License: AGR-2024-001

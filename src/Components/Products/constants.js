@@ -26,7 +26,7 @@ export const formatDate = (date) => {
   });
 };
 
-export const formatStockLevel = (current, minimum) => {
+export const formatStockLevel = (current) => {
   return `${current} units`;
 };
 

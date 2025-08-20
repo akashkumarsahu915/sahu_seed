@@ -8,7 +8,7 @@ import { MagnifyingGlassIcon, PlusIcon } from '@heroicons/react/24/outline';
 import { Typography, TextField, Button, Stack, Tabs, Tab } from '@mui/material';
 
 // ==================== ProductCatalogHeader ====================
-const ProductCatalogHeader = ({ searchQuery, onSearchChange, onAddProduct }) => {
+const ProductCatalogHeader = ({ searchQuery, onSearchChange, onAddProduct, onRefresh }) => {
   return (
     <Box className="mb-8">
       <Stack
@@ -25,15 +25,25 @@ const ProductCatalogHeader = ({ searchQuery, onSearchChange, onAddProduct }) => 
             Manage your seeds, fertilizers, and agricultural supplies
           </Typography>
         </Box>
-        <Button
-          variant="contained"
-          color="primary"
-          startIcon={<PlusIcon className="w-5 h-5" />}
-          onClick={onAddProduct} // Opens modal
-          className="px-6 py-2"
-        >
-          Add Product
-        </Button>
+        <Stack direction="row" spacing={2}>
+          <Button
+            variant="outlined"
+            color="primary"
+            onClick={onRefresh}
+            className="px-4 py-2"
+          >
+            Refresh
+          </Button>
+          <Button
+            variant="contained"
+            color="primary"
+            startIcon={<PlusIcon className="w-5 h-5" />}
+            onClick={onAddProduct} // Opens modal
+            className="px-6 py-2"
+          >
+            Add Product
+          </Button>
+        </Stack>
       </Stack>
 
       <TextField
@@ -78,7 +88,7 @@ const CategoryTabs = ({ selectedCategory, onCategoryChange }) => {
 };
 
 // ==================== Main ProductCatalog Component ====================
-const ProductCatalog = ({ products: initialProducts }) => {
+const ProductCatalog = ({ products: initialProducts, onRefresh }) => {
   const [products, setProducts] = useState(initialProducts);
   const [selectedCategory, setSelectedCategory] = useState(ProductCategory.ALL);
   const [searchQuery, setSearchQuery] = useState('');
@@ -155,6 +165,7 @@ const ProductCatalog = ({ products: initialProducts }) => {
         searchQuery={searchQuery}
         onSearchChange={handleSearchChange}
         onAddProduct={() => setIsAddModalOpen(true)} // ✅ open AddProductModal
+        onRefresh={onRefresh}
       />
 
       {/* Tabs */}

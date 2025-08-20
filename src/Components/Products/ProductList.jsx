@@ -2,7 +2,7 @@ import React from 'react';
 import { Card, CardContent, Typography, Button, Stack, Box, LinearProgress, Chip, Grid } from '@mui/material';
 import { PencilIcon } from '@heroicons/react/24/outline';
 import { formatPrice, formatDate, formatStockLevel, formatMinimumStock } from './constants.js';
-import  {ProductStatus}  from './constants';
+import { ProductStatus } from './constants.js';
 
 // Stock Status Chip Component
 const StockStatusChip = ({ status }) => {
@@ -151,7 +151,7 @@ const ProductList = ({ products, onEditProduct }) => {
   return (
     <Grid container spacing={3}>
       {products.map((product) => (
-        <Grid key={product.id} size={{ xs: 12, sm: 6, lg: 4 }}>
+        <Grid key={product.id} item xs={12} sm={6} lg={4}>
           <ProductCard
             product={product}
             onEdit={onEditProduct}

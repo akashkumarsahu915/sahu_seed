@@ -32,8 +32,8 @@ const StockStatusChip = ({ status }) => {
 // Product Card Component
 const ProductCard = ({ product, onEdit }) => {
   const getStockProgress = () => {
-    if (product.stockLevel === 0) return 0;
-    return Math.min((product.stockLevel / (product.minimumStock * 2)) * 100, 100);
+    if (product.stocklevel === 0) return 0;
+    return Math.min((product.stocklevel / (product.minimumStock * 2)) * 100, 100);
   };
 
   const getProgressColor = () => {
@@ -57,7 +57,7 @@ const ProductCard = ({ product, onEdit }) => {
                 Batch: {product.batch}
               </Typography>
             </Box>
-            <StockStatusChip status={product.status} />
+            <StockStatusChip status={ProductStatus.IN_STOCK} />
           </Stack>
 
           {/* Product details */}
@@ -94,7 +94,7 @@ const ProductCard = ({ product, onEdit }) => {
                 Expiry:
               </Typography>
               <Typography variant="body2" className="font-medium">
-                {product.expiry === 'N/A' ? 'N/A' : formatDate(product.expiry)}
+                {product.expire === 'N/A' ? 'N/A' : formatDate(product.expire)}
               </Typography>
             </Stack>
           </Stack>
@@ -106,7 +106,7 @@ const ProductCard = ({ product, onEdit }) => {
                 Stock Level:
               </Typography>
               <Typography variant="body2" className="font-medium">
-                {formatStockLevel(product.stockLevel)}
+                {formatStockLevel(product.stocklevel)}
               </Typography>
             </Stack>
             <LinearProgress
@@ -148,16 +148,28 @@ const ProductCard = ({ product, onEdit }) => {
 
 // Product Grid Component
 const ProductList = ({ products, onEditProduct }) => {
+  
+  if (!products || products.length === 0) {
+    return (
+      <div className="text-center py-8">
+        <p className="text-gray-500">No products found.</p>
+      </div>
+    );
+  }
+
   return (
     <Grid container spacing={3}>
-      {products.map((product) => (
-        <Grid key={product.id} item xs={12} sm={6} lg={4}>
-          <ProductCard
-            product={product}
-            onEdit={onEditProduct}
-          />
-        </Grid>
-      ))}
+      {products.map((product) => {
+        // console.log('Rendering product:', product);
+        return (
+          <Grid key={product.id} item xs={12} sm={6} lg={4}>
+            <ProductCard
+              product={product}
+              onEdit={onEditProduct}
+            />
+          </Grid>
+        );
+      })}
     </Grid>
   );
 };

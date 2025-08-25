@@ -19,11 +19,25 @@ export const formatPrice = (price) => {
 };
 
 export const formatDate = (date) => {
-  return new Date(date).toLocaleDateString('en-US', {
-    year: 'numeric',
-    month: '2-digit',
-    day: '2-digit'
-  });
+  if (!date || date === 'N/A') return 'N/A';
+  
+  try {
+    const dateObj = new Date(date);   
+    if (isNaN(dateObj.getTime())) {
+      console.log('Invalid date detected');
+      return 'Invalid Date';
+    }
+    
+    const formatted = dateObj.toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit'
+    });
+    return formatted;
+  } catch (error) {
+    console.error('Error formatting date:', error);
+    return 'Invalid Date';
+  }
 };
 
 export const formatStockLevel = (current) => {

@@ -1,16 +1,23 @@
 import React, { useState, useEffect } from 'react';
 import ProductCatalog from './ProductCatalog.jsx';
 import axios from 'axios';
+
 function MainProduct() {
-    const [product, setProducts] = useState([]);
+    const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
-    const fetchProducts = async (req,res) => {
+
+    const fetchProducts = async () => {
         try {
             setLoading(true);
             const response = await axios.get('https://sahu-seed-backed.onrender.com/api/get-product');
-            // console.log(response.data.product);
-            setProducts(response.data.product);
+            console.log('Products data fetched from the database:', response.data);
+            
+            // Check if the data is nested or direct
+            const productsData = response.data.product;
+            // console.log('Extracted products:', productsData);
+            
+            setProducts(productsData);
             setError(null);
         } catch (err) {
             console.error('Error fetching products:', err);
@@ -60,7 +67,7 @@ function MainProduct() {
 
     return (
         <div className="min-h-screen bg-gray-50">
-            <ProductCatalog products={product} onRefresh={handleRefresh} />
+            <ProductCatalog products={products} onRefresh={handleRefresh} />
         </div>
     );
 }
